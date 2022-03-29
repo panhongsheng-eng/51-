@@ -1,1 +1,39 @@
-点亮
+###点亮led代码
+
+
+
+#include "reg52.h"//头文件
+
+sbit ledOne = P3^7; //输出端口
+//延时函数(可以尝试自己写或直接用stc-isp复制延时函数代码）
+void Delay500ms()		//@11.0592MHz 晶振频率
+{
+	unsigned char i, j, k;
+	i = 4;
+	j = 129;
+	k = 119;
+	do
+	{
+		do
+		{
+			while (--k);
+		} while (--j);
+	} while (--i);
+}
+void main()
+{
+
+	//灯灭，给一个高电平
+	//重复执行
+	while(1){
+		//灯亮，给一个P3.7低电平
+		ledOne = 0;
+		//数数，数的期间，维持低电平，灯亮，延迟
+		Delay500ms();
+		//灯灭，给一个高电平
+		ledOne = 1;
+		//数数，数的期间，维持高电平，灯灭，延迟
+		Delay500ms();
+	}
+	
+}

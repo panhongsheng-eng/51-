@@ -1,0 +1,16 @@
+#按下灯亮，松开灯灭；
+#include "reg52.h"
+    
+    sbit key1   = P2^1;
+    sbit ledOne = P3^7;
+    
+    void main()
+    {
+    	while(1){
+            //注意：用“==”两个等于号表示判断，新手容易犯错
+            if(key1 == 0){ //KEY1位置和GND接通，表现为低电平，值为0
+                //灯亮，给一个P3.7低电平
+                ledOne = 0;
+            }
+    	}
+    }
